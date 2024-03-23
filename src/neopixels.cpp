@@ -26,33 +26,34 @@ void Neopixels::sendPixel(unsigned char r, unsigned char g , unsigned char b)  {
 // Just wait long enough without sending any bots to cause the pixels to latch and display the last sent frame
 
 void Neopixels::show() {
-	// Declare rect of square
-	SDL_Rect pixelRect;
+  SDL_RenderClear(renderer);
 
-	pixelRect.w = SCREEN_WIDTH / CONSOLE_DISP_WIDTH;
-	pixelRect.h = SCREEN_HEIGHT / CONSOLE_DISP_HEIGHT;
+  // Declare rect of square
+  SDL_Rect pixelRect;
 
-	// Event loop
-	for (int y = 0; y < CONSOLE_DISP_HEIGHT; y++) {
-		for (int x = 0; x < CONSOLE_DISP_WIDTH; x++) {
-			int pixel_index = y * CONSOLE_DISP_WIDTH + x % CONSOLE_DISP_WIDTH;
-			if (pixel_index >= NUM_PIXELS) {
-				continue;
-			}
-			uint32_t pixel = video_buffer[pixel_index];
+  pixelRect.w = SCREEN_WIDTH / CONSOLE_DISP_WIDTH;
+  pixelRect.h = SCREEN_HEIGHT / CONSOLE_DISP_HEIGHT;
 
-			pixelRect.x = x * pixelRect.w;
-			pixelRect.y = y * pixelRect.h;
+  for (int y = 0; y < CONSOLE_DISP_HEIGHT; y++) {
+    for (int x = 0; x < CONSOLE_DISP_WIDTH; x++) {
+      int pixel_index = y * CONSOLE_DISP_WIDTH + x % CONSOLE_DISP_WIDTH;
+      if (pixel_index >= NUM_PIXELS) {
+        continue;
+      }
+      uint32_t pixel = video_buffer[pixel_index];
 
-			uint8_t r = ((pixel >> 16) & 0xF) * 16;
-			uint8_t g = ((pixel >>  8) & 0xF) * 16;
-			uint8_t b = ((pixel >>  0) & 0xF) * 16;
-	    SDL_SetRenderDrawColor(renderer, r, g, b, 0xFF);
-	    // printf("%d:%d - %d/%d/%d\n", y, x, r, g, b);
+      pixelRect.x = x * pixelRect.w;
+      pixelRect.y = y * pixelRect.h;
 
-	    SDL_RenderFillRect(renderer, &pixelRect);
-		}
-	}
+      uint8_t r = ((pixel >> 16) & 0xF) * 16;
+      uint8_t g = ((pixel >>  8) & 0xF) * 16;
+      uint8_t b = ((pixel >>  0) & 0xF) * 16;
+      SDL_SetRenderDrawColor(renderer, r, g, b, 0xFF);
+      // printf("%d:%d - %d/%d/%d\n", y, x, r, g, b);
+
+      SDL_RenderFillRect(renderer, &pixelRect);
+    }
+  }
 
   // Update screen
   SDL_RenderPresent(renderer);

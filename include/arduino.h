@@ -15,10 +15,9 @@
 
 #define A0 0
 
-#define PROGMEM 
+#define PROGMEM
 
-#define min(a, b) ((a)<(b)?(a):(b))
-#define max(a, b) ((a)>(b)?(a):(b))
+using namespace std;
 
 typedef unsigned char uint8_t;
 typedef uint8_t byte;

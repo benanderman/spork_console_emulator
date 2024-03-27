@@ -74,7 +74,7 @@ int main(int argc, char* argv[]) {
                 << "SDL_Error: " << SDL_GetError() << std::endl;
   } else {
     // Create renderer
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (!renderer) {
         std::cout << "Renderer could not be created!" << std::endl
                   << "SDL_Error: " << SDL_GetError() << std::endl;

@@ -1,5 +1,6 @@
 #include <SDL.h>
 #include <map>
+#include <vector>
 
 #include "arduino.h"
 #include "renderer.h"

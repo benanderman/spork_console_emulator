@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <stddef.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <time.h>
 

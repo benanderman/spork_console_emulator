@@ -26,11 +26,11 @@
 # DEALINGS IN THE SOFTWARE.
 #
 
-# Define the project name
-project(spork-console-emulator)
-
 # Set the cmake minimum version to 3.5.1
 cmake_minimum_required(VERSION 3.5.1)
+
+# Define the project name
+project(spork-console-emulator)
 
 # Add SDL2 CMake modules
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/sdl2)

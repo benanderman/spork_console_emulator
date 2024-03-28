@@ -55,8 +55,8 @@ inline void randomSeed(int seed) {
   srand(seed);
 }
 
-inline void delayMicroseconds(int microSeconds) {
-
+inline void delayMicroseconds(int microseconds) {
+  delay(microseconds / 1000);
 }
 
 inline uint8_t pgm_read_byte(const char *byte) {
